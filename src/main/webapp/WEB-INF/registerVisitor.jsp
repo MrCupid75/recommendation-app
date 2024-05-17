@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -15,13 +16,10 @@
         </style>
     </head>
     <body> 
-        <h1> Welcome to World Wide Logistics! </h1>
+        <h1>Please register yourself.</h1>
 
-        <h3>
-            <a href="/registrationviewpage">To register please click here</a>
-        </h3>
-        <h3>
-            <a href="/visitors">To view the register visitors, please click here!</a>
-        </h3>
+        
+        <a href="/visitorwelcomescreen">Welcome Page</a>
+
     </body>
-</html>
+    </html>
