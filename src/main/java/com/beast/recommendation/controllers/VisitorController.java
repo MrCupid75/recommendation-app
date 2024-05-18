@@ -2,11 +2,15 @@ package com.beast.recommendation.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.beast.recommendation.models.VisitorTModel;
 import com.beast.recommendation.services.VisitorService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class VisitorController {
@@ -29,8 +33,18 @@ public class VisitorController {
         return "viewVisitors";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/registrationviewpage")
     public String showRegistration(@ModelAttribute("visitorObject") VisitorTModel visitors) {
         return "registerVisitor";
+    }
+
+    @PostMapping("/register")
+    public String registerVisitor(@Valid @ModelAttribute("visitorObject") 
+            VisitorTModel newVisitor, BindingResult result) {
+        if (result.hasErrors()) {
+            return "registerVisitor";
+        }
+        visitorService.createUser(newVisitor);
+        return "redirect:/visitors";
     }
 }
