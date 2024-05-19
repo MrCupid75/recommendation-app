@@ -24,7 +24,7 @@
                     <th> First Name </th>
                     <th> Last Name </th>
                     <th> Invitation Number </th>
-                    <th> Update</th>
+                    <th>Update</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +34,7 @@
                         <td> <c:out value="${visitor.firstName}" /> </td>
                         <td> <c:out value="${visitor.lastName}" /> </td>
                         <td> <c:out value="${visitor.invitationNumber}" /> </td>
+                        <td><a href="/editview/${visitor.id}">Edit</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

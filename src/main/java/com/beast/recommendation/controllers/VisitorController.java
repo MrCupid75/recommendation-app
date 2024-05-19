@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.beast.recommendation.models.VisitorTModel;
@@ -47,4 +48,22 @@ public class VisitorController {
         visitorService.createUser(newVisitor);
         return "redirect:/visitors";
     }
+
+    @GetMapping("/editview/{id}")
+    public String viewVisitorById(@PathVariable("id") Long id, Model model) {
+        VisitorTModel aVisitor = visitorService.getVisitbyId(id);
+        model.addAttribute("aSingleVisitor", aVisitor);
+        return "editView";
+    }
+
+    @PostMapping("/edit/{id}")
+    public String editVisitor(@PathVariable("id") Long id, @Valid @ModelAttribute("visitorObject") 
+            VisitorTModel updatedVisitor, BindingResult result) {
+                if(result.hasErrors()) {
+                    return "editView";
+                }
+                visitorService.updateVisitor(updatedVisitor);
+                return "redirect:/visitors";
+            }
+
 }

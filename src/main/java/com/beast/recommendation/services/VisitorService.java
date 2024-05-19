@@ -1,6 +1,7 @@
 package com.beast.recommendation.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,17 @@ public class VisitorService {
 
     public void createUser(VisitorTModel newVisitor) {
         visitRepo.save(newVisitor);
+    }
+
+    public VisitorTModel getVisitbyId(Long id) {
+        Optional<VisitorTModel> aVisitor = visitRepo.findById(id);
+        if (aVisitor.isPresent()) {
+            return aVisitor.get();
+        }
+        return null;
+    }
+
+    public void updateVisitor(VisitorTModel newVisistor) {
+        visitRepo.save(newVisistor);
     }
 }
