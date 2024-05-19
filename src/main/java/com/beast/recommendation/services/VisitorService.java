@@ -36,4 +36,8 @@ public class VisitorService {
     public void updateVisitor(VisitorTModel newVisistor) {
         visitRepo.save(newVisistor);
     }
+
+    public void deletebyID(Long id) {
+        visitRepo.deleteById(id);
+    }
 }

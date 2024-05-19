@@ -31,6 +31,10 @@
         </p>
     </form:form>
 
+    <form action="/remove/${aSingleVisitor.id}" method="POST">
+        <input type="submit" value="Delete">
+    </form>
+
     <a href="/visitorwelcomescreen">Welcome Page</a>
 </body>
 </html>

@@ -57,7 +57,7 @@ public class VisitorController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editVisitor(@PathVariable("id") Long id, @Valid @ModelAttribute("visitorObject") 
+    public String editVisitor(@PathVariable("id") Long id, @Valid @ModelAttribute("aSingleVisitor") 
             VisitorTModel updatedVisitor, BindingResult result) {
                 if(result.hasErrors()) {
                     return "editView";
@@ -66,4 +66,9 @@ public class VisitorController {
                 return "redirect:/visitors";
             }
 
+            @PostMapping("/remove/{id}")
+            public String removeVisitor(@PathVariable("id") Long id) {
+                visitorService.deletebyID(id);
+                return "redirect:/visitors";
+            }
 }
